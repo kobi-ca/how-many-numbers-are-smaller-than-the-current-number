@@ -3,3 +3,5 @@ https://leetcode.com/problems/how-many-numbers-are-smaller-than-the-current-numb
 https://leetcode.com/problems/how-many-numbers-are-smaller-than-the-current-number/discuss/607549/five-line-c-solution-that-doesnt-work
 
 https://en.cppreference.com/w/cpp/algorithm/exclusive_scan 
+
+Need cmake -DCMAKE_TOOLCHAIN_FILE=conan_toolchain.cmake
