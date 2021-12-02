@@ -14,7 +14,9 @@
 
 #include <vector>
 #include <numeric>
-#include <cassert>
+
+#include "gtest/gtest.h"
+#include "gmock/gmock.h"
 
 namespace {
 
@@ -28,32 +30,28 @@ namespace {
         std::transform(nums.cbegin(), nums.cend(), std::back_inserter(result), [=](int n) { return smallerThan[n]; });
         return result;
     }
+
+
+
 }
 
-int main() {
-    {
-        // 1
-        const auto v = std::vector{8, 1, 2, 2, 3};
-        const auto result = smallerNumbersThanCurrent(v);
-        const auto expected = std::vector{4, 0, 1, 1, 3};
-        assert(result == expected);
-    }
+TEST(main, first) {
+    const auto v = std::vector{8, 1, 2, 2, 3};
+    const auto result = smallerNumbersThanCurrent(v);
+    const auto expected = std::vector{4, 0, 1, 1, 3};
+    EXPECT_THAT(result, ::testing::ContainerEq(expected));
+}
 
-    {
-        // 2
-        const auto v = std::vector{6, 5, 4, 8};
-        const auto result = smallerNumbersThanCurrent(v);
-        const auto expected = std::vector{2, 1, 0, 3};
-        assert(result == expected);
-    }
+TEST(main, second) {
+    const auto v = std::vector{6, 5, 4, 8};
+    const auto result = smallerNumbersThanCurrent(v);
+    const auto expected = std::vector{2, 1, 0, 3};
+    EXPECT_THAT(result, ::testing::ContainerEq(expected));
+}
 
-    {
-        // 3
-        const auto v = std::vector{7, 7, 7, 7};
-        const auto result = smallerNumbersThanCurrent(v);
-        const auto expected = std::vector{0, 0, 0, 0};
-        assert(result == expected);
-    }
-
-    return 0;
+TEST(main, third) {
+    const auto v = std::vector{7, 7, 7, 7};
+    const auto result = smallerNumbersThanCurrent(v);
+    const auto expected = std::vector{0, 0, 0, 0};
+    EXPECT_THAT(result, ::testing::ContainerEq(expected));
 }
